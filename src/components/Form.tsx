@@ -10,7 +10,7 @@ function Form() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    router.push(`/videos/${email}`);
+    router.push(`/videos/${encodeURIComponent(email)}`);
   };
 
   return (
