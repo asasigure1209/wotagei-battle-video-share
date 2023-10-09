@@ -19,6 +19,7 @@ export default async function Videos({
         alignItems={"center"}
         height={"100vh"}
         color={"white"}
+        padding={4}
       >
         <Heading size="2xl" mb={12}>
           エルニーニョ Vol. 6
