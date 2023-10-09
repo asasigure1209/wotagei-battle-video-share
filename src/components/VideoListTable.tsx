@@ -29,7 +29,7 @@ export default async function VideoListTable({
       padding={2}
     >
       <TableContainer>
-        <Table variant="simple" size="lg">
+        <Table variant="simple">
           <TableCaption>
             配布動画の間違いや欠落があれば
             <br />
