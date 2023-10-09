@@ -1,5 +1,11 @@
+import { Metadata } from "next";
 import styles from "./page.module.css";
 import { Providers } from "./providers";
+
+export const metadata: Metadata = {
+  title: "エルニーニョ vol. 6 | 動画配布フォーム",
+  description: "ヲタ芸バトルイベント「エルニーニョ」の動画配布サイトです。",
+};
 
 export default function RootLayout({
   children,
