@@ -6,6 +6,7 @@ import {
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
@@ -16,6 +17,9 @@ export default async function VideoListTable({
 }: {
   fileNames: string[];
 }) {
+  if (fileNames.length === 0)
+    return <Text>該当する動画が見当たりませんでした</Text>;
+
   return (
     <Box
       borderRadius="md"
