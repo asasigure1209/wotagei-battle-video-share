@@ -1,4 +1,6 @@
+import VideoListTable from "@/components/VideoListTable";
 import { getEmails, getFileNamesForEmail } from "@/lib/spreadsheet";
+import { Flex, Heading } from "@chakra-ui/react";
 
 export default async function Videos({
   params,
@@ -10,22 +12,21 @@ export default async function Videos({
   );
 
   return (
-    <div>
-      My Post: {params.email} {fileNames}
-      <ul>
-        {fileNames.map((fileName) => {
-          const downloadUrl = `${process.env.WORKER_API}/${fileName}?action=get`;
+    <main>
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        height={"100vh"}
+        color={"white"}
+      >
+        <Heading size="2xl" mb={12}>
+          エルニーニョ Vol. 6
+        </Heading>
 
-          return (
-            <li key={fileName}>
-              <a href={downloadUrl} download={fileName}>
-                {fileName}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+        <VideoListTable fileNames={fileNames} />
+      </Flex>
+    </main>
   );
 }
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Box, Button, Heading, Input } from "@chakra-ui/react";
 
 function Form() {
   const [email, setEmail] = useState("");
@@ -14,16 +15,29 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="メールアドレスを入力"
-        required
-      />
-      <button type="submit">自分の動画を探す</button>
-    </form>
+    <Box
+      borderRadius="md"
+      backgroundColor="white"
+      padding="8"
+      textAlign="center"
+      color="gray.700"
+    >
+      <Heading as="h2" size="lg" mb={12}>
+        動画配布フォーム
+      </Heading>
+      <form onSubmit={handleSubmit}>
+        <Input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          placeholder="メールアドレスを入力"
+        />
+        <Button colorScheme="teal" type="submit" mt={8}>
+          自分の動画を探す
+        </Button>
+      </form>
+    </Box>
   );
 }
 
