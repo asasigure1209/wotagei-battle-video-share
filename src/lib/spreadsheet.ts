@@ -1,8 +1,5 @@
 import { GoogleApis, google } from "googleapis";
 
-const sleep = (second: number) =>
-  new Promise((resolve) => setTimeout(resolve, second * 1000));
-
 const getSheets = () => {
   const googleapis = new GoogleApis();
   const scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
@@ -21,7 +18,6 @@ const spreadsheetId = process.env.SPREAD_SHEET_ID;
 const range = `動画ファイル紐づけ!A:B`;
 
 export const getEmails = async () => {
-  await sleep(2);
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
     range,
@@ -42,11 +38,9 @@ export const getEmails = async () => {
   return emails;
 };
 
-let rows_data: string | any[] | null | undefined = null;
+let rows_data: any[][] | null | undefined = null;
 
 export const getFileNamesForEmail = async (email: string) => {
-  await sleep(2);
-
   if (!rows_data) {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
