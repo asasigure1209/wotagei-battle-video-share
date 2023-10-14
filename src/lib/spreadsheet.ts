@@ -21,7 +21,7 @@ const spreadsheetId = process.env.SPREAD_SHEET_ID;
 const range = `動画ファイル紐づけ!A:B`;
 
 export const getEmails = async () => {
-  await sleep(1);
+  await sleep(2);
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
     range,
@@ -43,7 +43,7 @@ export const getEmails = async () => {
 };
 
 export const getFileNamesForEmail = async (email: string) => {
-  await sleep(1);
+  await sleep(2);
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
