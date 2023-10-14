@@ -42,7 +42,7 @@ export const getEmails = async () => {
 };
 
 export const getFileNamesForEmail = async (email: string) => {
-  sleep(0.1);
+  await sleep(0.1);
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
