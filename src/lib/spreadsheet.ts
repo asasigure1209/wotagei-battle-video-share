@@ -1,5 +1,8 @@
 import { GoogleApis, google } from "googleapis";
 
+const sleep = (second: number) =>
+  new Promise((resolve) => setTimeout(resolve, second * 1000));
+
 const getSheets = () => {
   const googleapis = new GoogleApis();
   const scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
@@ -39,6 +42,8 @@ export const getEmails = async () => {
 };
 
 export const getFileNamesForEmail = async (email: string) => {
+  sleep(0.1);
+
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
     range,
