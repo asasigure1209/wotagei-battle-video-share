@@ -33,7 +33,7 @@ export default async function VideoListTable({
           <TableCaption>
             配布動画の間違いや欠落があれば
             <br />
-            運営までご連絡ください
+            運営メンバーまでご連絡ください
           </TableCaption>
           <Thead>
             <Tr>

@@ -1,5 +1,5 @@
 import Form from "@/components/Form";
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 
 export default function Home() {
   return (
@@ -12,9 +12,12 @@ export default function Home() {
         color={"white"}
         padding={4}
       >
-        <Heading size="2xl" mb={12}>
+        <Heading size="2xl" mb={4}>
           エルニーニョ Vol. 6
         </Heading>
+        <Text fontSize="xl" mb={8}>
+          みなさんお疲れ様でした！
+        </Text>
         <Form />
       </Flex>
     </main>
