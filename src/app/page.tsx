@@ -16,7 +16,7 @@ export default function Home() {
           エルニーニョ Vol. 6
         </Heading>
         <Text fontSize="xl" mb={8}>
-          みなさんお疲れ様でした！
+          動画のDLと再生がうまくいかないと何名かの方からご連絡頂いております。原因調査中ですのでしばらくお待ち下さい。
         </Text>
         <Form />
       </Flex>
