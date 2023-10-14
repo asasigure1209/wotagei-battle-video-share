@@ -2,8 +2,6 @@ import VideoListTable from "@/components/VideoListTable";
 import { getEmails, getFileNamesForEmail } from "@/lib/spreadsheet";
 import { Flex, Heading } from "@chakra-ui/react";
 
-let cacheEmails: { email: string }[] = [];
-
 export default async function Videos({
   params,
 }: {
@@ -34,12 +32,8 @@ export default async function Videos({
 }
 
 export async function generateStaticParams() {
-  if (cacheEmails.length > 0) return cacheEmails;
-
   const emails = await getEmails();
-  cacheEmails = emails.map((email) => ({
+  return emails.map((email) => ({
     email,
   }));
-
-  return cacheEmails;
 }

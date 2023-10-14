@@ -42,21 +42,26 @@ export const getEmails = async () => {
   return emails;
 };
 
+let rows_data: string | any[] | null | undefined = null;
+
 export const getFileNamesForEmail = async (email: string) => {
   await sleep(2);
 
-  const response = await sheets.spreadsheets.values.get({
-    spreadsheetId,
-    range,
-  });
+  if (!rows_data) {
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range,
+    });
 
-  const rows = response.data.values;
+    rows_data = response.data.values;
+  }
+
   let fileNames: string[] = [];
 
-  if (rows) {
+  if (rows_data) {
     // 1行目はヘッダーなのでスキップして、各行を調査
-    for (let i = 1; i < rows.length; i++) {
-      const [fileName, emailAddress] = rows[i];
+    for (let i = 1; i < rows_data.length; i++) {
+      const [fileName, emailAddress] = rows_data[i];
 
       emailAddress === email && fileNames.push(fileName);
     }
