@@ -1,15 +1,9 @@
 import VideoListTable from "@/components/VideoListTable";
-import { getEmails, getFileNamesForEmail } from "@/lib/spreadsheet";
+import { getNames, getFileNamesForName } from "@/lib/spreadsheet";
 import { Flex, Heading } from "@chakra-ui/react";
 
-export default async function Videos({
-  params,
-}: {
-  params: { email: string };
-}) {
-  const fileNames = await getFileNamesForEmail(
-    decodeURIComponent(params.email)
-  );
+export default async function Videos({ params }: { params: { name: string } }) {
+  const fileNames = await getFileNamesForName(decodeURIComponent(params.name));
 
   return (
     <main>
@@ -22,7 +16,7 @@ export default async function Videos({
         padding={4}
       >
         <Heading size="2xl" mb={12}>
-          エルニーニョ Vol. 6
+          エルニーニョ Vol. 7
         </Heading>
 
         <VideoListTable fileNames={fileNames} />
@@ -32,8 +26,8 @@ export default async function Videos({
 }
 
 export async function generateStaticParams() {
-  const emails = await getEmails();
-  return emails.map((email) => ({
-    email,
+  const names = await getNames();
+  return names.map((name) => ({
+    name: name,
   }));
 }

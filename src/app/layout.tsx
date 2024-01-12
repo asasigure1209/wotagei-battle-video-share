@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "エルニーニョ vol. 6 | 動画配布フォーム",
+  title: "エルニーニョ vol. 7 | 動画配布フォーム",
   description: "ヲタ芸バトルイベント「エルニーニョ」の動画配布サイトです。",
 };
 

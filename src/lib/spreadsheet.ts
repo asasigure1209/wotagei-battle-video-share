@@ -1,4 +1,5 @@
 import { GoogleApis, google } from "googleapis";
+import { cache } from "react";
 
 const getSheets = () => {
   const googleapis = new GoogleApis();
@@ -17,30 +18,30 @@ const sheets = getSheets();
 const spreadsheetId = process.env.SPREAD_SHEET_ID;
 const range = `動画ファイル紐づけ!A:B`;
 
-export const getEmails = async () => {
+export const getNames = cache(async () => {
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
     range,
   });
 
   const rows = response.data.values;
-  let emails: string[] = [];
+  let names: string[] = [];
 
   if (rows) {
     // 1行目はヘッダーなのでスキップして、各行を調査
     for (let i = 1; i < rows.length; i++) {
-      const [_, email] = rows[i];
+      const [_, name] = rows[i];
 
-      !emails.includes(email) && emails.push(email);
+      !names.includes(name) && names.push(name);
     }
   }
 
-  return emails;
-};
+  return names;
+});
 
 let rows_data: any[][] | null | undefined = null;
 
-export const getFileNamesForEmail = async (email: string) => {
+export const getFileNamesForName = async (name: string) => {
   if (!rows_data) {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
@@ -55,9 +56,9 @@ export const getFileNamesForEmail = async (email: string) => {
   if (rows_data) {
     // 1行目はヘッダーなのでスキップして、各行を調査
     for (let i = 1; i < rows_data.length; i++) {
-      const [fileName, emailAddress] = rows_data[i];
+      const [fileName, name_data] = rows_data[i];
 
-      emailAddress === email && fileNames.push(fileName);
+      name_data === name && fileNames.push(fileName);
     }
   }
 
