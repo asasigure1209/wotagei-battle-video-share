@@ -1,24 +1,26 @@
-import Form from "@/components/Form";
+import NameList from "@/components/NameList";
+import { getNames } from "@/lib/spreadsheet";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 
-export default function Home() {
+export default async function Home() {
+  const names = await getNames();
+
   return (
     <main>
       <Flex
         flexDirection={"column"}
         justifyContent={"center"}
         alignItems={"center"}
-        height={"100vh"}
         color={"white"}
         padding={4}
       >
         <Heading size="2xl" mb={4}>
-          エルニーニョ Vol. 6
+          エルニーニョ Vol. 7
         </Heading>
         <Text fontSize="xl" mb={8}>
           みなさんお疲れ様でした！
         </Text>
-        <Form />
+        <NameList names={names} />
       </Flex>
     </main>
   );
