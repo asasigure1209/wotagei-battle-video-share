@@ -36,7 +36,9 @@ export const getNames = cache(async () => {
     }
   }
 
-  return names;
+  const only_names = Array.from(new Set(names));
+
+  return only_names;
 });
 
 let rows_data: any[][] | null | undefined = null;
