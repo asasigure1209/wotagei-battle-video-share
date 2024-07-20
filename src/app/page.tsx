@@ -15,7 +15,7 @@ export default async function Home() {
         padding={4}
       >
         <Heading size="2xl" mb={4}>
-          エルニーニョ Vol. 7
+          エルニーニョ Vol. 8
         </Heading>
         <Text fontSize="xl" mb={8}>
           みなさんお疲れ様でした！

@@ -16,7 +16,7 @@ export default async function Videos({ params }: { params: { name: string } }) {
         padding={4}
       >
         <Heading size="2xl" mb={12}>
-          エルニーニョ Vol. 7
+          エルニーニョ Vol. 8
         </Heading>
 
         <VideoListTable fileNames={fileNames} />
